@@ -2,6 +2,11 @@
 @bg-color: #dd830d;
 @text-color: rgb(26, 1, 1);
 
+// media queries
+@desktop: ~"only screen and (min-width: 960px) and (max-width: 1199px)";
+@tablet: ~"only screen and (min-width: 720px) and (max-width: 959px)";
+@mobile: ~"only screen and (min-width: 320px) and (max-width: 768px)";
+
 * {
     margin: 0;
     border: 0;
@@ -26,5 +31,49 @@ body {
 main {
     background-color: white;
     padding: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    @media @desktop {
+        width: 940px;
+        flex-direction: row;
+    }
 }
 
+aside {
+     @media @tablet {
+         display: flex;
+         flex-direction: column;
+     }
+}
+
+img {
+    width: 320px;
+    padding: 1em;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    
+    p {
+       font-size: 14px;
+       text-align: center;
+        padding: 5px;
+        width: 200px;
+        margin: 1em;
+        line-height: 2em;
+        color: #ecddec;
+        background-color: rgba(36, 3, 3, 0.295);
+        font-weight: bold;
+        font-size: 3em;
+        text-align: center;
+    }
+
+     @media @tablet {
+         width: 768px;
+     }
+}
