@@ -1,9 +1,7 @@
 # gulpworkflow
+## With Browsersync, Less
+### Setting up this repo
 
-Gulp Workflow
-With Browsersync, Less
-Setting up this repo
-
-Clone git repo
-run npm intall
-Run Gulp
+- Clone git repo
+- run npm intall
+- Run Gulp
