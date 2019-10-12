@@ -21,7 +21,9 @@ const imagemin = require('gulp-imagemin')
 // File paths
 const files = {
     lessPath: 'app/less/**/*.less',
-    jsPath: 'app/js/**/*.js'
+    jsPath: 'app/js/**/*.js',
+    cssPath: 'dist/*.css',
+    htmlPath: './*.html'
 }
 
 // Less task: compiles the main.less file into style.css
@@ -45,17 +47,29 @@ function jsTask() {
         .pipe(dest('dist'));
 }
 
+//minify images
+function minifyTask() {
+    return gulp.src('images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/images'))
+}
 
 // Watch task: watch LESS and JS files for changes
 // If any change, run less and js tasks simultaneously
 function watchTask() {
+     browserSync.init({
+         server: './'
+     });
+     //html & css changes
+    watch(files.htmlPath).on('change', browserSync.reload);
+    watch(files.cssPath).on('change', browserSync.reload);
     watch([files.lessPath, files.jsPath],
-        parallel(lessTask, jsTask));
+    parallel(lessTask, jsTask));
 }
 
 // Export the default Gulp task so it can be run
 // Runs the less and js tasks simultaneously
 exports.default = series(
     parallel(lessTask, jsTask),
-    watchTask
+    watchTask 
 );
