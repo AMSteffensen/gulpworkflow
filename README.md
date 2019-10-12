@@ -1,5 +1,5 @@
 # gulpworkflow
-## With Browsersync & Less compiler
+## With Less, Browsersync & Minification of files
 ### Setting up this repo
 
 - Clone git repo
